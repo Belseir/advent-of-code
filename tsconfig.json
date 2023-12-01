@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "ESNext",
+        "module": "ESNext",
+        "esModuleInterop": true,
+
+        "strict": true,
+        "forceConsistentCasingInFileNames": true,
+        "skipLibCheck": true,
+        "allowSyntheticDefaultImports": true,
+        "noImplicitAny": true,
+        "sourceMap": false,
+        "removeComments": true,
+
+        "outDir": "./dist/"
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["node_modules", "**/*.spec.ts"]
+}
