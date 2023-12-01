@@ -4,8 +4,10 @@ param(
 
 $currentYear = (Get-Date).Year
 
+$paddedDayNumber = "{0:D2}" -f $dayNumber
+
 $yearFolderPath = Join-Path -Path "./src" -ChildPath "$currentYear"
-$dayFolderPath = Join-Path -Path $yearFolderPath -ChildPath "day-$dayNumber"
+$dayFolderPath = Join-Path -Path $yearFolderPath -ChildPath "day-$paddedDayNumber"
 
 if (-not (Test-Path -Path $yearFolderPath)) {
     New-Item -Path $yearFolderPath -ItemType Directory -Force
