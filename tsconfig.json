@@ -10,9 +10,10 @@
         "allowSyntheticDefaultImports": true,
         "noImplicitAny": true,
         "sourceMap": false,
-        "removeComments": true,
-
-        "outDir": "./dist/"
+        "removeComments": true
+    },
+    "ts-node": {
+        "esm": true
     },
     "include": ["src/**/*.ts"],
     "exclude": ["node_modules", "**/*.spec.ts"]
