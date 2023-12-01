@@ -33,9 +33,7 @@ const partTwo = (input: string): number => {
             const firstDigit = digits[0]
             const lastDigit = digits[digits.length - 1] ?? firstDigit
 
-            const calibrationValue = `${firstDigit}${lastDigit}`
-
-            return calibrationValueSum + parseInt(calibrationValue)
+            return calibrationValueSum + parseInt(`${firstDigit}${lastDigit}`)
         }, 0)
 }
 
