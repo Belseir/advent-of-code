@@ -15,7 +15,7 @@ if (-not (Test-Path -Path $yearFolderPath)) {
 
 New-Item -Path $dayFolderPath -ItemType Directory -Force
 
-$files = @("input.txt", "solution.ts", "solution.spec.ts", "README.md")
+$files = @("input.txt", "solution.ts", "README.md")
 foreach ($file in $files) {
     $filePath = Join-Path -Path $dayFolderPath -ChildPath $file
     New-Item -Path $filePath -ItemType File -Force
