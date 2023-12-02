@@ -31,7 +31,7 @@ const partOne = (input: string): number => {
 
 const partTwo = (input: string): number => {
     return input.split("\n").reduce((acc, game) => {
-        const minimum = {
+        const maxCubes = {
             red: 0,
             green: 0,
             blue: 0
@@ -42,14 +42,14 @@ const partTwo = (input: string): number => {
             .forEach((set) => {
                 set.split(",").forEach((cube) => {
                     const [amount, color] = cube.trim().split(" ")
-
-                    if (Number(amount) > minimum[color as Color]) {
-                        minimum[color as Color] = Number(amount)
-                    }
+                    maxCubes[color as Color] = Math.max(
+                        maxCubes[color as Color],
+                        Number(amount)
+                    )
                 })
             })
 
-        return acc + minimum.red * minimum.green * minimum.blue
+        return acc + maxCubes.red * maxCubes.green * maxCubes.blue
     }, 0)
 }
 
