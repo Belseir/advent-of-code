@@ -2,17 +2,14 @@ const parseInput = (input: string): number[][][] =>
     input
         .replace(/Card [1-9]*: /g, "")
         .split("\n")
-        .reduce((acc: number[][][], line: string) => {
-            const numbers = line.split(" | ").map((e) => {
+        .map((line: string) =>
+            line.split(" | ").map((e) => {
                 const matches = e.match(/\d*\S/g)
                 if (matches === null) return []
 
                 return matches.map(Number)
             })
-
-            acc.push(numbers)
-            return acc
-        }, [])
+        )
 
 const amountOfMatchingCards = (scratchcard: number[][]): number => {
     const [winning, current] = scratchcard
