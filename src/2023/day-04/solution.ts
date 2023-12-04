@@ -14,16 +14,17 @@ const parseInput = (input: string): number[][][] =>
             return acc
         }, [])
 
+const amountOfMatchingCards = (scratchcard: number[][]): number => {
+    const [winning, current] = scratchcard
+    return current.filter((n) => winning.includes(n)).length
+}
+
 const partOne = (input: string): number => {
     const scratchcards = parseInput(input)
 
     const totalWorth = scratchcards.reduce((totalWorth, scratchcard) => {
-        const [winning, current] = scratchcard
-        const cardWorth = current.reduce((cardWorth, number) => {
-            if (winning.includes(number))
-                cardWorth = cardWorth === 0 ? 1 : cardWorth * 2
-            return cardWorth
-        }, 0)
+        const matchingAmount = amountOfMatchingCards(scratchcard)
+        const cardWorth = Math.floor(2 ** matchingAmount / 2)
 
         return totalWorth + cardWorth
     }, 0)
@@ -37,12 +38,7 @@ const partTwo = (input: string): number => {
 
     const totalScratchcards = originalScratchcards.reduce(
         (totalScratchcards, scratchcard, idx) => {
-            const [winning, current] = scratchcard
-            const matchingNumbers = current.filter((n) =>
-                winning.includes(n)
-            ).length
-
-            for (let i = 1; i <= matchingNumbers; i++) {
+            for (let i = 1; i <= amountOfMatchingCards(scratchcard); i++) {
                 amounts[idx + i] += 1 * amounts[idx]
                 totalScratchcards += 1 * amounts[idx]
             }
